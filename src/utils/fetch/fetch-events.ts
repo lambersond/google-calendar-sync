@@ -1,5 +1,4 @@
-import { signIn } from 'next-auth/react'
-import { Event, SyncEvent } from '@/types'
+import { Event } from '@/types'
 
 export const getEvents = async (searchParams: Record<string, string | boolean | number>) => {
   const url = new URL(window.origin + '/api/calendar/event')
@@ -14,14 +13,14 @@ export const getEvents = async (searchParams: Record<string, string | boolean | 
   return (await res.json()) as Promise<{ events: Event[] }>
 }
 
-export const postEvents = async (events: Record<string, SyncEvent>, preface: string) => {
+export const postEvents = async (events: Event[]) => {
   const res = await fetch(window.origin + '/api/calendar/event', {
     credentials: 'include',
     method: 'POST',
     headers: {
       'content-type': 'application/json',
     },
-    body: JSON.stringify({ events: Object.values(events).filter(e => e.checked), preface }),
+    body: JSON.stringify({ events }),
   })
 
   // return (await res.json()) as Promise<{ events: Event[] }>

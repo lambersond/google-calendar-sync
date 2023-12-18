@@ -1,12 +1,12 @@
 import { memo, useEffect } from 'react'
-import { useCalendarParams } from '@/hooks/use-calendar-params'
 import { useSetEvents } from '@/hooks/use-events-sync'
-import { Event, SyncEvent } from '@/types'
 import { getEvents } from '@/utils/fetch/fetch-events'
+import { getItem } from '@/utils/storage'
 import { CalendarList } from '../calendar-list'
+import type { Event, SyncEvent } from '@/types'
 
 function _CalendarListContainer() {
-  const calendarParams = useCalendarParams()
+  const calendarParams = getItem('calendarParams')
   const setEvents = useSetEvents()
 
   useEffect(() => {

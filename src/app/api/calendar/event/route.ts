@@ -37,30 +37,21 @@ export async function POST(req: NextRequest) {
 
   const body = await req.json()
   const token = await getToken({ req })
-  console.log(token)
 
   body.events.forEach((event: Event) => {
     const syncedEvent = {
-      summary: body.preface + event.summary,
-      location: event.location,
-      description: '',
-      start: event.start,
-      end: event.end,
-      recurrence: [],
+      ...event,
       attendees: [{ email: token?.email }],
-      reminders: {},
     }
 
-    console.log(syncedEvent)
-
-    // fetch(url.href, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //     Authorization: `Bearer ${token?.accessToken}`,
-    //   },
-    //   body: JSON.stringify(syncedEvent),
-    // })
+    fetch(url.href, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token?.accessToken}`,
+      },
+      body: JSON.stringify(syncedEvent),
+    })
   })
 
   return new NextResponse()

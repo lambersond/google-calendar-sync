@@ -1,11 +1,10 @@
 import { memo, useCallback } from 'react'
 import { DateRangePicker } from '@/components/date-range-picker'
-import { useSetCalendarParams } from '@/hooks/use-calendar-params'
+import { setItem } from '@/utils/storage'
 
 export function _CalendarDatePicker() {
-  const setCalendarParams = useSetCalendarParams()
   const handleOnDateChange = useCallback((dates: [Date | null, Date | null]) => {
-    setCalendarParams({
+    setItem('calendarParams', {
       timeMin: dates[0]?.toISOString() ?? new Date().toISOString(),
       timeMax:
         dates[1]?.toISOString() ??

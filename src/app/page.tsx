@@ -1,17 +1,22 @@
-import { CalendarEvents } from '@/components/calendar-events/calendar-events'
-import { GoogleLogin } from '@/components/google-login'
+'use client'
+import { useCallback } from 'react'
+import { signIn } from 'next-auth/react'
+import { CalendarDatePicker } from '@/components/calendar-events/calendar-date-picker'
+import { Button } from '@/components/common/button'
+import { GoogleIcon } from '@/components/common/icons/google-icon'
 
 export default function Home() {
+  const login = useCallback(() => {
+    signIn('google', { callbackUrl: window.location.origin + '/events/select' })
+  }, [])
+
   return (
-    <main className='flex min-h-screen min-w-screen flex-col items-center py-24'>
-      <div className='flex flex-col items-center'>
-        <h1 className='text-4xl font-bold text-center text-gray-200'>Google Calendar Sync</h1>
-        <p className='text-xl text-center text-gray-300'>
-          Sync events between two Google calendars
-        </p>
-      </div>
-      <GoogleLogin />
-      <CalendarEvents />
-    </main>
+    <>
+      <CalendarDatePicker />
+      <Button onClick={login}>
+        <GoogleIcon />
+        Select Your Account
+      </Button>
+    </>
   )
 }
