@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "iulian-radu-at.find-unused-exports",
+    "nhoizey.gremlins",
+    "ghmcadams.lintlens",
+    "yoavbls.pretty-ts-errors",
+    "sonarsource.sonarlint-vscode",
+  ]
+}
