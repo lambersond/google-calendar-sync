@@ -8,9 +8,7 @@ const authOptions = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET ?? '',
       authorization: {
         params: {
-          // TODO: Are all these scopes needed?
-          scope:
-            'https://www.googleapis.com/auth/calendar.events https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email openid',
+          scope: 'https://www.googleapis.com/auth/calendar.events openid email',
         },
       },
     }),

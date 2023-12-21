@@ -29,30 +29,18 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  const url = new URL(calendarApi)
-
-  req.nextUrl.searchParams.forEach((value, key) => {
-    url.searchParams.set(key, value)
-  })
-
   const body = await req.json()
   const token = await getToken({ req })
 
-  body.events.forEach((event: Event) => {
-    const syncedEvent = {
-      ...event,
+  return fetch(calendarApi, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${token?.accessToken}`,
+    },
+    body: JSON.stringify({
+      ...body,
       attendees: [{ email: token?.email }],
-    }
-
-    fetch(url.href, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token?.accessToken}`,
-      },
-      body: JSON.stringify(syncedEvent),
-    })
+    }),
   })
-
-  return new NextResponse()
 }

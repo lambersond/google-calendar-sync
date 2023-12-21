@@ -10,4 +10,9 @@ export const transformEvents = (events: SyncEvent[]) =>
     recurrence: [],
     attendees: [],
     reminders: {},
+    extendedProperties: {
+      private: {
+        originalEventId: event.id,
+      },
+    },
   }))
