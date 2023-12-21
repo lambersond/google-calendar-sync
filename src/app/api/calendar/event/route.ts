@@ -32,15 +32,31 @@ export async function POST(req: NextRequest) {
   const body = await req.json()
   const token = await getToken({ req })
 
-  return fetch(calendarApi, {
-    method: 'POST',
+  const searchExisting = new URL(calendarApi)
+  searchExisting.searchParams.append(
+    'privateExtendedProperty',
+    `originalEventId=${body.extendedProperties?.private?.originalEventId}`,
+  )
+  const searchRes = await fetch(searchExisting, {
     headers: {
-      'Content-Type': 'application/json',
       Authorization: `Bearer ${token?.accessToken}`,
     },
-    body: JSON.stringify({
-      ...body,
-      attendees: [{ email: token?.email }],
-    }),
   })
+  const alreadyExists = await searchRes.json()
+
+  if (alreadyExists.items?.length === 0) {
+    return fetch(calendarApi, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token?.accessToken}`,
+      },
+      body: JSON.stringify({
+        ...body,
+        attendees: [{ email: token?.email }],
+      }),
+    })
+  } else {
+    return new NextResponse(JSON.stringify(alreadyExists.items[0]))
+  }
 }
