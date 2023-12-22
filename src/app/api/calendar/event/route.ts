@@ -20,10 +20,12 @@ export async function GET(req: NextRequest) {
   })
 
   const googleResponse = await googleRequest.json()
+  const filteredEvents =
+    googleResponse.items?.filter((e: Event) => !e.extendedProperties?.private?.synced) ?? []
 
   return new NextResponse<{ events: Event[] }>(
     JSON.stringify({
-      events: googleResponse.items ?? [],
+      events: filteredEvents,
     }),
   )
 }
