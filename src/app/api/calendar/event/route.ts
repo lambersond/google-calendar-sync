@@ -53,7 +53,7 @@ export async function POST(req: NextRequest) {
       },
       body: JSON.stringify({
         ...body,
-        attendees: [{ email: token?.email }],
+        attendees: [{ email: token?.email, responseStatus: 'accepted' }],
       }),
     })
   } else {

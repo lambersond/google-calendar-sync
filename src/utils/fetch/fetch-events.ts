@@ -14,12 +14,13 @@ export const getEvents = async (searchParams: Record<string, string | boolean | 
   return (await res.json()) as Promise<{ events: Event[] }>
 }
 
-export const postEvents = (prefix = 'Synced') => {
+export const postEvents = async (prefix = 'Synced') => {
   const channel = new BroadcastChannel('event-sync-channel')
   const events: Event[] = getItem('events') ?? []
+  let progress = 1
 
-  events.forEach(async (event, idx) => {
-    await fetch(window.origin + '/api/calendar/event', {
+  const promises = events.map(async event => {
+    const response = await fetch(window.origin + '/api/calendar/event', {
       credentials: 'include',
       method: 'POST',
       headers: {
@@ -31,6 +32,10 @@ export const postEvents = (prefix = 'Synced') => {
       }),
     })
 
-    channel.postMessage(idx + 1 / events.length)
+    channel.postMessage((progress++ / 10) * 100)
+
+    return response.json()
   })
+
+  return await Promise.all(promises)
 }
