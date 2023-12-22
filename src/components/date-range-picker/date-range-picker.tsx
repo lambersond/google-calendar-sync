@@ -19,6 +19,7 @@ function _DateRangePicker({
       endDate={dates[1]}
       selectsRange
       inline
+      fixedHeight
     />
   )
 }
