@@ -16,7 +16,10 @@ function _SaveAndLoginButton() {
   }, [events])
 
   return (
-    <Button onClick={login}>
+    <Button
+      onClick={login}
+      className='my-2 flex items-center hover:bg-gray-900 text-gray-200 py-2 px-4 rounded border border-gray-700'
+    >
       <GoogleIcon />
       Select Your Second Account
     </Button>

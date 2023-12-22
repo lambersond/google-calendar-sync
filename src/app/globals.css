@@ -26,6 +26,20 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  transform: scale(0);
+  background-color: rgba(255, 255, 255, 0.7);
+  animation: ripple 600ms ease-out;
+}
+
+@keyframes ripple {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
 
 
 /* Raect Date Picker */

@@ -16,7 +16,12 @@ export default function Select() {
   return (
     <>
       <Input label='Title Prefix:' onChange={setPrefix} />
-      <Button onClick={onClick}>Sync Events</Button>
+      <Button
+        onClick={onClick}
+        className='my-2 flex items-center hover:bg-gray-900 text-gray-200 py-2 px-4 rounded border border-gray-700'
+      >
+        Sync Events
+      </Button>
       <p>{status}</p>
     </>
   )
