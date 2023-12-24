@@ -24,12 +24,14 @@ const WrappedCalendar = () => {
   const { onMouseLeave } = useCalendarDayApi()
   return (
     <div
-      className='w-full bg-zinc-900 min-w-sm min-h-sm flex-col max-w-[524px] max-h-md sm:rounded-lg p-4 overflow-hidden text-slate-400 shadow-[0_0_32px_0px_black]'
+      className='flex flex-col gap-2 bg-zinc-900 w-full h-[430px] max-w-[524px] sm:rounded-lg p-4 overflow-hidden text-slate-400 shadow-[0_0_32px_0px_black]'
       onMouseLeave={onMouseLeave}
     >
-      <Header />
-      <Weekdays />
-      <div className='border-b-2 border-slate-700 w-[120%] ml-[-12px] mb-2' />
+      <div className='h-24'>
+        <Header />
+        <Weekdays />
+        <div className='border-b-2 border-slate-700 w-[108%] ml-[-20px] mb-1' />
+      </div>
       <Weeks />
     </div>
   )

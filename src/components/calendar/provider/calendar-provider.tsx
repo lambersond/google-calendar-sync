@@ -68,7 +68,7 @@ export const useCalendarDayApi = () => {
   const setRange = useContext(CalendarDayApiCtx)
 
   return {
-    onMouseEnter: (date: Date) => {
+    onMouseEnter: (date: Date) => () => {
       setRange(prev => ({
         ...prev,
         potentialEnd:
@@ -81,7 +81,7 @@ export const useCalendarDayApi = () => {
         potentialEnd: prev.start,
       }))
     },
-    onClick: (date: Date) => {
+    onClick: (date: Date) => () => {
       setRange(prev => {
         if ((prev.start && prev.end) || !prev.start)
           return {
