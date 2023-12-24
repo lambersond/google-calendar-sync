@@ -18,8 +18,8 @@ function _Button({
         const radius = diameter / 2
 
         rippleElement.style.width = rippleElement.style.height = `${diameter}px`
-        rippleElement.style.left = `${event.clientX - (buttonRef.current.offsetLeft + radius)}px`
-        rippleElement.style.top = `${event.clientY - (buttonRef.current.offsetTop + radius)}px`
+        rippleElement.style.left = `${event.pageX - (buttonRef.current.offsetLeft + radius)}px`
+        rippleElement.style.top = `${event.pageY - (buttonRef.current.offsetTop + radius)}px`
         rippleElement.classList.add('ripple')
         event.currentTarget.appendChild(rippleElement)
 

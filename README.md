@@ -4,8 +4,4 @@ This is a simple web app that allows you to sync your Google Calendar with a sec
 
 ### TODOS
 - [ ] Get Prod client configured
-- [ ] Determine what all scopes are actually needed
-- [ ] Restyle the Date Picker
-- [ ] Handle the status of the sync somehow
-
-
+- [ ] Expand Syncable properties

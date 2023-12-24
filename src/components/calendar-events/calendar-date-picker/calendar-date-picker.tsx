@@ -1,5 +1,5 @@
 import { memo, useCallback } from 'react'
-import { DateRangePicker } from '@/components/date-range-picker'
+import { Calendar } from '@/components/calendar/calendar'
 import { setItem } from '@/utils/storage'
 
 export function _CalendarDatePicker() {
@@ -13,8 +13,8 @@ export function _CalendarDatePicker() {
   }, [])
 
   return (
-    <div className='flex justify-center'>
-      <DateRangePicker onChange={handleOnDateChange} />
+    <div className='flex justify-center w-full'>
+      <Calendar onChange={handleOnDateChange} />
     </div>
   )
 }

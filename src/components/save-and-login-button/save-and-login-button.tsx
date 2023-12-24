@@ -2,8 +2,7 @@ import { memo, useCallback } from 'react'
 import { signIn } from 'next-auth/react'
 import { useEvents } from '@/hooks/use-events-sync'
 import { setItem } from '@/utils/storage'
-import { Button } from '../common/button'
-import { GoogleIcon } from '../common/icons/google-icon'
+import { GoogleButton } from '../google-button'
 import { transformEvents } from './helpers'
 
 function _SaveAndLoginButton() {
@@ -15,15 +14,7 @@ function _SaveAndLoginButton() {
     signIn('google', { callbackUrl: window.location.origin + '/events/sync' })
   }, [events])
 
-  return (
-    <Button
-      onClick={login}
-      className='my-2 flex items-center hover:bg-gray-900 text-gray-200 py-2 px-4 rounded border border-gray-700'
-    >
-      <GoogleIcon />
-      Select Your Second Account
-    </Button>
-  )
+  return <GoogleButton onClick={login} />
 }
 
 export const SaveAndLoginButton = memo(_SaveAndLoginButton)
