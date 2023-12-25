@@ -1,15 +1,27 @@
 import { memo, useCallback } from 'react'
+import { endOfDay, endOfToday, max, min, startOfToday } from 'date-fns'
 import { Calendar } from '@/components/calendar/calendar'
 import { setItem } from '@/utils/storage'
 
 export function _CalendarDatePicker() {
   const handleOnDateChange = useCallback((dates: [Date | null, Date | null]) => {
-    setItem('calendarParams', {
-      timeMin: dates[0]?.toISOString() ?? new Date().toISOString(),
-      timeMax:
-        dates[1]?.toISOString() ??
-        new Date(new Date().getTime() + 180 * 24 * 60 * 60 * 1000).toISOString(),
-    })
+    if (dates[0] && dates[1]) {
+      setItem('calendarParams', {
+        timeMin: min(dates as Date[]).toISOString(),
+        timeMax: max(dates as Date[]).toISOString(),
+      })
+    } else if (dates.filter(Boolean).length === 1) {
+      const date = dates.filter(Boolean)[0] as Date
+      setItem('calendarParams', {
+        timeMin: date.toISOString(),
+        timeMax: endOfDay(date).toISOString(),
+      })
+    } else {
+      setItem('calendarParams', {
+        timeMin: startOfToday().toISOString(),
+        timeMax: endOfToday().toISOString(),
+      })
+    }
   }, [])
 
   return (

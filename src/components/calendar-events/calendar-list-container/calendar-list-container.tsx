@@ -1,4 +1,5 @@
 import { memo, useEffect } from 'react'
+import { endOfToday, startOfToday } from 'date-fns'
 import { useSetEvents } from '@/hooks/use-events-sync'
 import { getEvents } from '@/utils/fetch/fetch-events'
 import { getItem } from '@/utils/storage'
@@ -16,8 +17,8 @@ function _CalendarListContainer() {
         orderBy: 'startTime',
         maxResults: 50,
         showDeleted: false,
-        timeMin: calendarParams.timeMin,
-        timeMax: calendarParams.timeMax,
+        timeMin: calendarParams?.timeMin ?? startOfToday().toISOString(),
+        timeMax: calendarParams?.timeMax ?? endOfToday().toISOString(),
       })
 
       const items = res.events.reduce((acc: Record<string, SyncEvent>, curr: Event) => {
