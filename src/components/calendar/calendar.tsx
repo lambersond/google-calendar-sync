@@ -11,7 +11,7 @@ function _Calendar({
   onChange,
 }: {
   startingDate?: Date
-  onChange: (range: [Date, Date | null]) => void
+  onChange: (range: [Date | null, Date | null]) => void
 }) {
   return (
     <CalendarProvider startingDate={startingDate} onChange={onChange}>

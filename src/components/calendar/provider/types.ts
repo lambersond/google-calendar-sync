@@ -14,11 +14,15 @@ export type DayData = {
   potentialRange: Range
 }
 
-export type DayApi = Dispatch<SetStateAction<RangeType>>
+export type DayApi = {
+  setRange: Dispatch<SetStateAction<RangeType>>
+  onChange(range: Range): void
+}
+
 export type CurrentMonth = [Date, Dispatch<SetStateAction<Date>>]
 
 export type CalendarProviderProps = Readonly<{
   children: React.ReactNode
   startingDate?: Date
-  onChange: (range: [Date, Date | null]) => void
+  onChange: (range: [NullDate, NullDate]) => void
 }>
