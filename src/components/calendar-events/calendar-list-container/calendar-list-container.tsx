@@ -10,6 +10,7 @@ function _CalendarListContainer() {
   const calendarParams = getItem('calendarParams')
   const setEvents = useSetEvents()
 
+  // TODO: Move this to the provider
   useEffect(() => {
     ;(async () => {
       const res = await getEvents({

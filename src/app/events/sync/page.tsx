@@ -9,15 +9,18 @@ export default function Select() {
   const [prefix, setPrefix] = useState('')
   const status = useBroadcastChannel(0)
 
-  const onClick = useCallback(() => {
-    postEvents(prefix)
-  }, [prefix])
+  const onClick = useCallback(
+    (prefix: string) => () => {
+      postEvents(prefix)
+    },
+    [],
+  )
 
   return (
     <>
       <Input label='Title Prefix:' onChange={setPrefix} />
       <Button
-        onClick={onClick}
+        onClick={onClick(prefix)}
         className='my-2 flex items-center hover:bg-gray-900 text-gray-200 py-2 px-4 rounded border border-gray-700'
       >
         Sync Events

@@ -1,3 +1,4 @@
+import { BroadcastChannel } from 'broadcast-channel'
 import { Event } from '@/types'
 import { getItem } from '../storage'
 

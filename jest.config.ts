@@ -8,6 +8,22 @@ const createJestConfig = nextJest({
  
 const config: Config = {
   coverageProvider: 'v8',
+  collectCoverageFrom: ['src/**/*.{ts,tsx}'],
+  coveragePathIgnorePatterns: [
+    'types.ts',
+    'index.ts',
+    'app/api/auth',
+  ],
+  coverageDirectory: 'coverage',
+  coverageThreshold: {
+    global: {
+      branches: 80,
+      functions: 80,
+      lines: 80,
+      statements: 80,
+    },
+  },
+  clearMocks: true,
   testEnvironment: 'jsdom',
   setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
 }

@@ -8,6 +8,7 @@ function _GoogleButton({ onClick }: { onClick: (event: MouseEvent<HTMLButtonElem
     <Button
       onClick={onClick}
       className='my-2 flex items-center hover:bg-gray-900 text-gray-200 py-2 px-4 rounded border border-gray-700'
+      data-testid='GoogleButton'
     >
       <GoogleIcon />
       Select Your Account

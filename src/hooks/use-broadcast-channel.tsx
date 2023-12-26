@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { BroadcastChannel } from 'broadcast-channel'
 
 export function useBroadcastChannel<T = string>(defaultValue: T | null = null): T | null {
   const [message, setMessage] = useState<T | null>(defaultValue)

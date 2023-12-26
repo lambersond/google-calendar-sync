@@ -19,7 +19,7 @@ const authOptions = {
   callbacks: {
     async jwt({ token, account }) {
       token.accessToken = account?.access_token ?? ''
-      token.exp = account?.expires_at ?? Date.now() / 1000 + 3600
+      token.exp = account?.expires_at ?? Date.now() / 1000 + 3600 // 1 hour
 
       return token
     },
