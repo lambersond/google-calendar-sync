@@ -11,7 +11,7 @@
     "test": "jest --coverage",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
-    "coverage": "jest --coverage --json"
+    "coverage": "jest --coverage --json --outputFile=./coverage/coverage-summary.json"
   },
   "dependencies": {
     "broadcast-channel": "^7.0.0",
