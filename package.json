@@ -10,7 +10,8 @@
     "lint": "next lint",
     "test": "jest --coverage",
     "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "coverage": "jest --coverage -r json-summary"
   },
   "dependencies": {
     "broadcast-channel": "^7.0.0",
