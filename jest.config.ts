@@ -15,6 +15,7 @@ const config: Config = {
     'app/api/auth',
   ],
   coverageDirectory: 'coverage',
+  coverageReporters: ['text', 'lcov', 'clover', 'json-summary', 'html'],
   coverageThreshold: {
     global: {
       branches: 80,
