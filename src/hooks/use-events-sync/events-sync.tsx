@@ -8,23 +8,26 @@ import {
   useEffect,
 } from 'react'
 import { endOfToday, startOfToday } from 'date-fns'
+import { noop } from 'lodash'
 import { getEvents } from '@/utils/fetch/fetch-events'
 import { getItem } from '@/utils/storage'
 import type { Event, SyncEvent } from '@/types'
 
 const calendarParams = getItem('calendarParams')
 
-type EventsSync = Record<string, SyncEvent>
-
-const defaultState = {} as EventsSync
-
-const EventsDataCtx = createContext<EventsSync>(defaultState)
-const EventsApiCtx = createContext<Dispatch<SetStateAction<EventsSync>>>(() => {})
+const EventsDataCtx = createContext<SyncEvent[]>([])
+const EventsApiCtx = createContext<Dispatch<SetStateAction<SyncEvent[]>>>(noop)
+const PreviousCtx = createContext<[[number, number], Dispatch<SetStateAction<[number, number]>>]>([
+  [-1, -1],
+  noop,
+])
 
 export function EventsProvider({ children }: Readonly<{ children: React.ReactNode }>) {
-  const [events, setEvents] = useState<Record<string, SyncEvent>>(defaultState)
+  const [events, setEvents] = useState<SyncEvent[]>([])
+  const previous = useState<[number, number]>([-1, -1])
 
   const value = useMemo(() => events, [events])
+  const previousValue = useMemo(() => previous, [previous])
 
   useEffect(() => {
     ;(async () => {
@@ -37,10 +40,7 @@ export function EventsProvider({ children }: Readonly<{ children: React.ReactNod
         timeMax: calendarParams?.timeMax ?? endOfToday().toISOString(),
       })
 
-      const items = res.events.reduce((acc: Record<string, SyncEvent>, curr: Event) => {
-        acc[curr.id] = { ...curr, checked: false }
-        return acc
-      }, {})
+      const items = res.events.map((event: Event) => ({ ...event, checked: false }))
 
       setEvents(items)
     })()
@@ -48,7 +48,9 @@ export function EventsProvider({ children }: Readonly<{ children: React.ReactNod
 
   return (
     <EventsApiCtx.Provider value={setEvents}>
-      <EventsDataCtx.Provider value={value}>{children}</EventsDataCtx.Provider>
+      <PreviousCtx.Provider value={previousValue}>
+        <EventsDataCtx.Provider value={value}>{children}</EventsDataCtx.Provider>
+      </PreviousCtx.Provider>
     </EventsApiCtx.Provider>
   )
 }
@@ -57,13 +59,23 @@ export const useEvents = () => useContext(EventsDataCtx)
 export const useSetEvents = () => useContext(EventsApiCtx)
 export const useUpdateSyncEventCheck = () => {
   const setEvents = useSetEvents()
-  return (id: string, checked: boolean) => {
-    setEvents(prevEvents => ({
-      ...prevEvents,
-      [id]: {
-        ...prevEvents[id],
-        checked,
-      },
-    }))
+  const [[previousIndex, lastShiftIndex], setPreviousIndex] = useContext(PreviousCtx)
+
+  return (id: string, index: number, isShiftPressed: boolean, checked: boolean) => {
+    if (isShiftPressed) {
+      setEvents(prevEvents => {
+        const increment = lastShiftIndex === previousIndex ? 0 : 1
+        const min = Math.min(previousIndex + increment, index)
+        const max = Math.max(previousIndex - increment, index)
+
+        return prevEvents.map((event, i) => (i >= min && i <= max ? { ...event, checked } : event))
+      })
+      setPreviousIndex([index, index])
+    } else {
+      setEvents(prevEvents =>
+        prevEvents.map(event => (event.id === id ? { ...event, checked } : event)),
+      )
+      setPreviousIndex([index, -1])
+    }
   }
 }
