@@ -2,6 +2,7 @@
 import { useCallback, useState } from 'react'
 import { Button } from '@/components/common/button'
 import { Input } from '@/components/common/input'
+import { EventsLayout } from '@/components/layouts'
 import { useBroadcastChannel } from '@/hooks/use-broadcast-channel'
 import { postEvents } from '@/utils/fetch/fetch-events'
 
@@ -17,7 +18,7 @@ export default function Select() {
   )
 
   return (
-    <>
+    <EventsLayout>
       <Input label='Title Prefix:' onChange={setPrefix} />
       <Button
         onClick={onClick(prefix)}
@@ -26,6 +27,6 @@ export default function Select() {
         Sync Events
       </Button>
       <p>{status}</p>
-    </>
+    </EventsLayout>
   )
 }
