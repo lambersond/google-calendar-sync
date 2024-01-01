@@ -11,7 +11,7 @@ exports[`app/layout should match layout snapshot 1`] = `
       className="fixed top-0 left-0 w-full h-16 shadow-nav bg-zinc-900"
     >
       <div
-        className="flex items-center h-full max-w-screen-lg mx-auto px-4 justify-between"
+        className="flex items-center h-full max-w-screen-xl mx-auto px-4 justify-between"
       >
         <a
           className="flex gap-4 items-center"
@@ -66,7 +66,7 @@ exports[`app/layout should match layout snapshot 1`] = `
       </div>
     </div>
     <main
-      className="flex min-h-screen min-w-screen flex-col items-center py-24 gap-8"
+      className="flex min-h-screen max-w-screen-xl mx-auto min-w-screen flex-col items-center py-24 gap-8"
     >
       Testing
     </main>

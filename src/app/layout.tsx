@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang='en'>
       <body className={inter.className}>
         <NavigationBar />
-        <main className='flex min-h-screen min-w-screen flex-col items-center py-24 gap-8'>
+        <main className='flex min-h-screen max-w-screen-xl mx-auto min-w-screen flex-col items-center py-24 gap-8'>
           {children}
         </main>
       </body>
