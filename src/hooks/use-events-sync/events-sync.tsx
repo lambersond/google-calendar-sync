@@ -5,8 +5,14 @@ import {
   useMemo,
   useState,
   useContext,
+  useEffect,
 } from 'react'
-import type { SyncEvent } from '@/types'
+import { endOfToday, startOfToday } from 'date-fns'
+import { getEvents } from '@/utils/fetch/fetch-events'
+import { getItem } from '@/utils/storage'
+import type { Event, SyncEvent } from '@/types'
+
+const calendarParams = getItem('calendarParams')
 
 type EventsSync = Record<string, SyncEvent>
 
@@ -19,6 +25,26 @@ export function EventsProvider({ children }: Readonly<{ children: React.ReactNod
   const [events, setEvents] = useState<Record<string, SyncEvent>>(defaultState)
 
   const value = useMemo(() => events, [events])
+
+  useEffect(() => {
+    ;(async () => {
+      const res = await getEvents({
+        singleEvents: true,
+        orderBy: 'startTime',
+        maxResults: 50,
+        showDeleted: false,
+        timeMin: calendarParams?.timeMin ?? startOfToday().toISOString(),
+        timeMax: calendarParams?.timeMax ?? endOfToday().toISOString(),
+      })
+
+      const items = res.events.reduce((acc: Record<string, SyncEvent>, curr: Event) => {
+        acc[curr.id] = { ...curr, checked: false }
+        return acc
+      }, {})
+
+      setEvents(items)
+    })()
+  }, [])
 
   return (
     <EventsApiCtx.Provider value={setEvents}>
