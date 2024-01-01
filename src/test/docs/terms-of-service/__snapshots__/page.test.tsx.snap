@@ -1,175 +1,168 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`app/layout should match layout snapshot 1`] = `
-[
-  <h1
-    className="text-4xl font-bold text-center text-gray-200"
-  >
-    Google Calendar Sync
-  </h1>,
+<div
+  className="px-10 py-8"
+>
   <div
-    className="px-10 py-8"
+    className="flex flex-col w-full gap-6"
   >
-    <div
-      className="flex flex-col w-full gap-6"
-    >
-      <section>
-        <p
-          className="text-4xl text-slate-200"
+    <section>
+      <p
+        className="text-4xl text-slate-200"
+      >
+        Terms of Service
+      </p>
+      <li
+        className="text-lg text-slate-100 pl-4"
+      >
+        Effective Date: 
+        December 24, 2023
+      </li>
+      <li
+        className="text-lg text-slate-100 pl-4"
+      >
+        Last Updated: 
+        December 31, 2023
+      </li>
+    </section>
+    <section>
+      <p
+        className="text-2xl text-slate-200"
+      >
+        1. Acceptance of Terms
+      </p>
+      <li
+        className="text-lg text-slate-100 pl-4"
+      >
+        By using the Google Calendar Sync application (the "App"), you agree to be bound by these Terms of Service (the "Terms"). If you do not agree to these Terms, you may not use the App.
+      </li>
+    </section>
+    <section>
+      <p
+        className="text-2xl text-slate-200"
+      >
+        2. Description of Service
+      </p>
+      <li
+        className="text-lg text-slate-100 pl-4"
+      >
+        The App allows you to sync events between your different Google accounts.
+      </li>
+    </section>
+    <section>
+      <p
+        className="text-2xl text-slate-200"
+      >
+        3. Your Responsibilities
+      </p>
+      <li
+        className="text-lg text-slate-100 pl-4"
+      >
+        Keeping your login information confidential.
+      </li>
+      <li
+        className="text-lg text-slate-100 pl-4"
+      >
+        Using the App in accordance with these Terms and all applicable laws and regulations.
+      </li>
+      <li
+        className="text-lg text-slate-100 pl-4"
+      >
+        Not using the App to violate the rights of others.
+      </li>
+    </section>
+    <section>
+      <p
+        className="text-2xl text-slate-200"
+      >
+        4. Third-Party Services
+      </p>
+      <li
+        className="text-lg text-slate-100 pl-4"
+      >
+        The App may integrate with third-party services. We are not responsible for the content or functionality of these third-party services.
+      </li>
+    </section>
+    <section>
+      <p
+        className="text-2xl text-slate-200"
+      >
+        5. Disclaimer of Warranties
+      </p>
+      <li
+        className="text-lg text-slate-100 pl-4"
+      >
+        THE APP IS PROVIDED "AS IS" AND "AS AVAILABLE". WE DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. WE DO NOT WARRANT THAT THE APP WILL BE ERROR-FREE OR THAT IT WILL MEET YOUR REQUIREMENTS.
+      </li>
+    </section>
+    <section>
+      <p
+        className="text-2xl text-slate-200"
+      >
+        6. Limitation of Liability
+      </p>
+      <li
+        className="text-lg text-slate-100 pl-4"
+      >
+        OUR LIABILITY FOR ANY DAMAGES ARISING OUT OF OR IN CONNECTION WITH YOUR USE OF THE APP IS LIMITED TO THE AMOUNT YOU PAID FOR THE APP, IF ANY. WE SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, CONSEQUENTIAL, SPECIAL, OR EXEMPLARY DAMAGES.
+      </li>
+    </section>
+    <section>
+      <p
+        className="text-2xl text-slate-200"
+      >
+        7. Termination
+      </p>
+      <li
+        className="text-lg text-slate-100 pl-4"
+      >
+        We may terminate your access to the App at any time, for any reason, without notice.
+      </li>
+    </section>
+    <section>
+      <p
+        className="text-2xl text-slate-200"
+      >
+        8. Entire Agreement
+      </p>
+      <li
+        className="text-lg text-slate-100 pl-4"
+      >
+        These Terms constitute the entire agreement between you and us regarding your use of the App.
+      </li>
+    </section>
+    <section>
+      <p
+        className="text-2xl text-slate-200"
+      >
+        9. Changes to These Terms
+      </p>
+      <li
+        className="text-lg text-slate-100 pl-4"
+      >
+        We may update these Terms from time to time. If we make any material changes, we will notify you through the App.
+      </li>
+    </section>
+    <section>
+      <p
+        className="text-2xl text-slate-200"
+      >
+        Contact Us
+      </p>
+      <li
+        className="text-lg text-slate-100 pl-4"
+      >
+        If you have any questions, please contact us at
+         
+        <a
+          className="italic underline hover:underline-offset-2"
+          href="mailto:sync.calendar.webapp@gmail.com"
         >
-          Terms of Service
-        </p>
-        <li
-          className="text-lg text-slate-100 pl-4"
-        >
-          Effective Date: 
-          December 24, 2023
-        </li>
-        <li
-          className="text-lg text-slate-100 pl-4"
-        >
-          Last Updated: 
-          December 31, 2023
-        </li>
-      </section>
-      <section>
-        <p
-          className="text-2xl text-slate-200"
-        >
-          1. Acceptance of Terms
-        </p>
-        <li
-          className="text-lg text-slate-100 pl-4"
-        >
-          By using the Google Calendar Sync application (the "App"), you agree to be bound by these Terms of Service (the "Terms"). If you do not agree to these Terms, you may not use the App.
-        </li>
-      </section>
-      <section>
-        <p
-          className="text-2xl text-slate-200"
-        >
-          2. Description of Service
-        </p>
-        <li
-          className="text-lg text-slate-100 pl-4"
-        >
-          The App allows you to sync events between your different Google accounts.
-        </li>
-      </section>
-      <section>
-        <p
-          className="text-2xl text-slate-200"
-        >
-          3. Your Responsibilities
-        </p>
-        <li
-          className="text-lg text-slate-100 pl-4"
-        >
-          Keeping your login information confidential.
-        </li>
-        <li
-          className="text-lg text-slate-100 pl-4"
-        >
-          Using the App in accordance with these Terms and all applicable laws and regulations.
-        </li>
-        <li
-          className="text-lg text-slate-100 pl-4"
-        >
-          Not using the App to violate the rights of others.
-        </li>
-      </section>
-      <section>
-        <p
-          className="text-2xl text-slate-200"
-        >
-          4. Third-Party Services
-        </p>
-        <li
-          className="text-lg text-slate-100 pl-4"
-        >
-          The App may integrate with third-party services. We are not responsible for the content or functionality of these third-party services.
-        </li>
-      </section>
-      <section>
-        <p
-          className="text-2xl text-slate-200"
-        >
-          5. Disclaimer of Warranties
-        </p>
-        <li
-          className="text-lg text-slate-100 pl-4"
-        >
-          THE APP IS PROVIDED "AS IS" AND "AS AVAILABLE". WE DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT. WE DO NOT WARRANT THAT THE APP WILL BE ERROR-FREE OR THAT IT WILL MEET YOUR REQUIREMENTS.
-        </li>
-      </section>
-      <section>
-        <p
-          className="text-2xl text-slate-200"
-        >
-          6. Limitation of Liability
-        </p>
-        <li
-          className="text-lg text-slate-100 pl-4"
-        >
-          OUR LIABILITY FOR ANY DAMAGES ARISING OUT OF OR IN CONNECTION WITH YOUR USE OF THE APP IS LIMITED TO THE AMOUNT YOU PAID FOR THE APP, IF ANY. WE SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, CONSEQUENTIAL, SPECIAL, OR EXEMPLARY DAMAGES.
-        </li>
-      </section>
-      <section>
-        <p
-          className="text-2xl text-slate-200"
-        >
-          7. Termination
-        </p>
-        <li
-          className="text-lg text-slate-100 pl-4"
-        >
-          We may terminate your access to the App at any time, for any reason, without notice.
-        </li>
-      </section>
-      <section>
-        <p
-          className="text-2xl text-slate-200"
-        >
-          8. Entire Agreement
-        </p>
-        <li
-          className="text-lg text-slate-100 pl-4"
-        >
-          These Terms constitute the entire agreement between you and us regarding your use of the App.
-        </li>
-      </section>
-      <section>
-        <p
-          className="text-2xl text-slate-200"
-        >
-          9. Changes to These Terms
-        </p>
-        <li
-          className="text-lg text-slate-100 pl-4"
-        >
-          We may update these Terms from time to time. If we make any material changes, we will notify you through the App.
-        </li>
-      </section>
-      <section>
-        <p
-          className="text-2xl text-slate-200"
-        >
-          Contact Us
-        </p>
-        <li
-          className="text-lg text-slate-100 pl-4"
-        >
-          If you have any questions, please contact us at
-           
-          <a
-            className="italic underline hover:underline-offset-2"
-            href="mailto:sync.calendar.webapp@gmail.com"
-          >
-            sync.calendar.webapp@gmail.com
-          </a>
-        </li>
-      </section>
-    </div>
-  </div>,
-]
+          sync.calendar.webapp@gmail.com
+        </a>
+      </li>
+    </section>
+  </div>
+</div>
 `;

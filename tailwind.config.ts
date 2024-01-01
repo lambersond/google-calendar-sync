@@ -19,6 +19,9 @@ const config: Config = {
         'tertiary': '#BA181B',
         'accent': '#E5383B',
       },
+      boxShadow: {
+        nav: '0px -2px 30px 0px black',
+      },
     },
     fontFamily: {
       sans: ['Roboto', 'sans-serif'],
