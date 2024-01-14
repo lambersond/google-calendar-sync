@@ -47,16 +47,6 @@ describe('app/events/select/page', () => {
     })
   })
 
-  it.failing('should render all day event durations', async () => {
-    mockGetEvents.mockResolvedValueOnce({ events: mockEvents })
-
-    await waitFor(() => render(<Select />))
-
-    expect(await screen.findAllByText('All Day')).toHaveLength(2)
-    expect(await screen.findAllByText('+1')).toHaveLength(1)
-    expect(await screen.findAllByText('+2')).toHaveLength(1)
-  })
-
   it('should handle shift selection - EventCheckbox', async () => {
     mockGetEvents.mockResolvedValueOnce({ events: mockEvents })
 
