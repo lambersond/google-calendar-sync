@@ -111,7 +111,7 @@ interface EventAttendee {
   self?: boolean | null
 }
 
-interface EventDateTime {
+export interface EventDateTime {
   date?: string | null
   dateTime?: string | null
   timeZone?: string | null
