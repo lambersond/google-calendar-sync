@@ -14,9 +14,9 @@ const config: Config = {
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
       colors: {
-        'primary': '#660708',
+        'primary': '#BA181B',
         'secondary': '#A4161A',
-        'tertiary': '#BA181B',
+        'tertiary': '#660708',
         'accent': '#E5383B',
       },
       boxShadow: {
