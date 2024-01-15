@@ -12,16 +12,16 @@ export async function GET(req: NextRequest) {
   })
 
   const token = await getToken({ req })
-
-  const googleRequest = await fetch(url.href, {
+  const res = await fetch(url.href, {
     headers: {
       Authorization: `Bearer ${token?.accessToken}`,
     },
   })
 
-  const googleResponse = await googleRequest.json()
+  const json = await res.json()
+
   const filteredEvents =
-    googleResponse.items?.filter((e: Event) => !e.extendedProperties?.private?.synced) ?? []
+    json.items?.filter((e: Event) => !e.extendedProperties?.private?.synced) ?? []
 
   return new NextResponse<{ events: Event[] }>(
     JSON.stringify({
