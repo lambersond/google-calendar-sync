@@ -9,6 +9,7 @@ const authOptions = {
       authorization: {
         params: {
           scope: 'https://www.googleapis.com/auth/calendar.events openid email',
+          prompt: 'select_account',
         },
       },
     }),
