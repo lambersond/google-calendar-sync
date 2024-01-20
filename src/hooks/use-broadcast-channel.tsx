@@ -5,8 +5,8 @@ export function useBroadcastChannel<T = string>(defaultValue: T | null = null): 
   const [message, setMessage] = useState<T | null>(defaultValue)
 
   useEffect(() => {
-    const fn = (event: MessageEvent<T>) => {
-      setMessage(event.data)
+    const fn = (event: T) => {
+      setMessage(prev => event || prev)
     }
     new BroadcastChannel('event-sync-channel').addEventListener('message', fn)
 

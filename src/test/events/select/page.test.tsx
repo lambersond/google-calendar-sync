@@ -4,7 +4,7 @@ import { ProviderType } from 'next-auth/providers/index'
 import { SignInOptions } from 'next-auth/react'
 import Select from '@/app/events/select/page'
 import { getItem, setItem } from '@/utils/storage'
-import { mockEvents } from './mock-data'
+import { mockEvents } from '../mock-data'
 
 const mockSignIn = jest.fn()
 const mockGetEvents = jest.fn()
