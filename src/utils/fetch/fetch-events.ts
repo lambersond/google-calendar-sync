@@ -33,7 +33,7 @@ export const postEvents = async (prefix = 'Synced') => {
       }),
     })
 
-    channel.postMessage((progress++ / 10) * 100)
+    channel.postMessage((progress++ / events.length) * 100)
 
     return response.json()
   })
