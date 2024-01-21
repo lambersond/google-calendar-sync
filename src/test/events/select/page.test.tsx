@@ -3,6 +3,7 @@ import { userEvent } from '@testing-library/user-event'
 import { ProviderType } from 'next-auth/providers/index'
 import { SignInOptions } from 'next-auth/react'
 import Select from '@/app/events/select/page'
+import { CALENDAR_PARAMS } from '@/constants'
 import { getItem, setItem } from '@/utils/storage'
 import { mockEvents } from '../mock-data'
 
@@ -20,7 +21,7 @@ jest.mock('../../../utils/fetch/fetch-events', () => ({
 describe('app/events/select/page', () => {
   beforeEach(() => {
     jest.clearAllMocks()
-    setItem('calendarParams', {
+    setItem(CALENDAR_PARAMS, {
       timeMin: '2024-01-01T00:00:00.000Z',
       timeMax: '2024-01-31T00:00:00.000Z',
     })

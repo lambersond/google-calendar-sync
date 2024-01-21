@@ -10,6 +10,7 @@ import {
 } from 'react'
 import { endOfToday, isSameDay, startOfToday } from 'date-fns'
 import { findIndex, flatMap, noop } from 'lodash'
+import { CALENDAR_PARAMS } from '@/constants'
 import { formatToDate, parseEventDateFieldToDateTime } from '@/utils/date-helpers'
 import { getEvents } from '@/utils/fetch/fetch-events'
 import { getItem } from '@/utils/storage'
@@ -32,7 +33,7 @@ export function EventsProvider({ children }: Readonly<{ children: React.ReactNod
 
   useEffect(() => {
     ;(async () => {
-      const calendarParams = getItem('calendarParams')
+      const calendarParams = getItem(CALENDAR_PARAMS)
       const timeMin = calendarParams?.timeMin ?? startOfToday().toISOString()
       const timeMax = calendarParams?.timeMax ?? endOfToday().toISOString()
 
