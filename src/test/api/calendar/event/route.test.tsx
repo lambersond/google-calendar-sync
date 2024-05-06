@@ -35,8 +35,9 @@ describe('api/calendar/event/route', () => {
 
     const response = await GET(nextRequest)
     const body = await response.json()
+    const expected = mockData.filter(e => e.eventType !== 'workingLocation')
 
-    expect(body).toEqual({ events: mockData })
+    expect(body).toEqual({ events: expected })
   })
 
   it('GET: should filter out synced events', async () => {
