@@ -3,6 +3,7 @@ import { getToken } from 'next-auth/jwt'
 import type { Event } from '@/types'
 
 const calendarApi = 'https://content.googleapis.com/calendar/v3/calendars/primary/events'
+const isWorkingLocation = (event: Event) => event?.eventType === 'workingLocation'
 
 export async function GET(req: NextRequest) {
   const url = new URL(calendarApi)
@@ -19,9 +20,10 @@ export async function GET(req: NextRequest) {
   })
 
   const json = await res.json()
-
   const filteredEvents =
-    json.items?.filter((e: Event) => !e.extendedProperties?.private?.synced) ?? []
+    json.items?.filter(
+      (e: Event) => !isWorkingLocation(e) && !e.extendedProperties?.private?.synced,
+    ) ?? []
 
   return new NextResponse<{ events: Event[] }>(
     JSON.stringify({
